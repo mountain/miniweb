@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 var path = require("fs").realpathSync(__dirname + "/.."),
-    //Minimal = require("../../minimal"),
-    Minimal = require("minimal"),
+    Minimal = require("miniweb"),
     server = Minimal.server,
     logger = Minimal.logger;
 
