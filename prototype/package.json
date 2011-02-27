@@ -1,0 +1,8 @@
+{
+  "name": "YOURAPP",
+  "version": "0.0.1",
+  "author" : "YOURNAME",
+  "dependencies": {
+    "minimal": "0.0.1"
+  }
+}

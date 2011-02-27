@@ -1,0 +1,14 @@
+{
+  "name": "minimal",
+  "version": "0.0.1",
+  "author" : "Mingli Yuan <mingli.yuan@gmail.com>",
+  "contributors" : [
+      "Kai Chen <chenk85@gmail.com>"
+  ],
+  "dependencies": {
+    "connect": "0.5.9"
+  , "underscore": "1.1.4"
+  , "step": "0.0.3"
+  , "winston": "0.2.1"
+  }
+}
