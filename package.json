@@ -13,13 +13,13 @@
     },
     "main": "./minimal/index.js",
     "directories" : {
-        "bin": "./bin"
-        "lib": "./lib"
-        "minimal": "./minimal"
+       "bin": "./bin"
+     , "lib": "./lib"
+     , "minimal": "./minimal"
     },
     "repository": {
-        "type": "git",
-        "url" : "http://github.com/mountain/minimal.git"
+      "type": "git"
+    , "url" : "http://github.com/mountain/minimal.git"
     },
     "engines": {
       "node": ">= 0.4.0"
@@ -31,7 +31,7 @@
       "mini" : "./bin/mini"
     },
     "licenses" : [{
-        "type" : "MIT",
-        "url" : "http://github.com/mountain/minimal/blob/master/LICENSE"
+      "type" : "MIT"
+    , "url" : "http://github.com/mountain/minimal/blob/master/LICENSE"
     }]
 }
