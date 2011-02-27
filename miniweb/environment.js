@@ -25,7 +25,7 @@ exports.walk = (function() {
                 counter += 1;
                 fs.stat(name, function(err, stat) {
                     if(err) {
-                        finished(err);
+                        if(finished) finished(err);
                         return;
                     }
                     if(stat.isDirectory()) {
@@ -37,7 +37,7 @@ exports.walk = (function() {
                     counter -= 1;
                     if(index === relnames.length - 1) counter -= 1;
                     if(counter === 0) {
-                        finished(null);
+                        if(finished) finished(null);
                     }
                 });
             });

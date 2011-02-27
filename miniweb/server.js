@@ -18,6 +18,9 @@ exports.start = function (root) {
       function () {
           require('./template').load(env, this);
       },
+      function () {
+          require('./controller').load(env, this);
+      },
       function (err) {
           if (err) {
               throw err;
@@ -25,7 +28,7 @@ exports.start = function (root) {
 
           var loadHandler = function (name) {
                   logger.info("loading controller " + name);
-                  var path = [env.path, 'app', 'controllers', name].join('/');
+                  var path = env.controllers[name];
                   return require(path)(env);
               },
               authenticate = function (realm) {
