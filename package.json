@@ -1,36 +1,41 @@
 {
-    "name": "minimal",
-    "version": "0.0.1",
-    "author" : "Mingli Yuan <mingli.yuan@gmail.com>",
-    "contributors" : [
-      "Kai Chen <chenk85@gmail.com>"
-    ],
-    "dependencies": {
-      "connect": "0.5.10"
-    , "underscore": "1.1.4"
-    , "step": "0.0.3"
-    , "winston": "0.2.3"
-    },
-    "main": "./minimal/index.js",
-    "directories" : {
-      "lib": "./lib"
-    , "minimal": "./minimal"
-    },
-    "repository": {
-      "type": "git"
-    , "url" : "http://github.com/mountain/minimal.git"
-    },
-    "engines": {
-      "node": ">= 0.4.0"
-    },
-    "bugs" : {
-        "web" : "http://github.com/mountain/minimal/issues"
-    },
-    "bin" : {
-      "mini" : "./scripts/mini.js"
-    },
-    "licenses" : [{
-      "type" : "MIT"
-    , "url" : "http://github.com/mountain/minimal/blob/master/LICENSE"
-    }]
+  "name": "minimal",
+  "version": "0.0.2",
+  "author": "Mingli Yuan <mingli.yuan@gmail.com>",
+  "contributors": [
+    "Kai Chen <chenk85@gmail.com>"
+  ],
+  "dependencies": {
+    "connect": "0.5.10",
+    "underscore": "1.1.4",
+    "step": "0.0.3",
+    "winston": "0.2.3"
+  },
+  "main": "./minimal/index.js",
+  "directories": {
+    "lib": "./lib",
+    "minimal": "./minimal"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mountain/minimal.git"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "bugs": {
+    "url": "http://github.com/mountain/minimal/issues"
+  },
+  "bin": {
+    "mini": "./scripts/mini.js"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/mountain/minimal/blob/master/LICENSE"
+    }
+  ],
+  "files": [
+    ""
+  ]
 }
