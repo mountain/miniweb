@@ -7,7 +7,7 @@ Please follow below steps:
  * install [nodejs](http://nodejs.org), please install version > 0.4.0
  * install [npm](http://npmjs.org)
  * npm install miniweb
- * mini YOURPROJECT
+ * mini create YOURPROJECT
  * cd YOURPROJECT
  * cp config/server.js.example config/server.js
  * ./bin/start
