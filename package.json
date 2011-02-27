@@ -1,5 +1,5 @@
 {
-  "name": "minimal",
+  "name": "miniweb",
   "version": "0.0.2",
   "author": "Mingli Yuan <mingli.yuan@gmail.com>",
   "contributors": [
@@ -11,20 +11,20 @@
     "step": "0.0.3",
     "winston": "0.2.3"
   },
-  "main": "./minimal/index.js",
+  "main": "./miniweb/index.js",
   "directories": {
     "lib": "./lib",
-    "minimal": "./minimal"
+    "miniweb": "./miniweb"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/mountain/minimal.git"
+    "url": "git://github.com/mountain/miniweb.git"
   },
   "engines": {
     "node": ">= 0.4.0"
   },
   "bugs": {
-    "url": "http://github.com/mountain/minimal/issues"
+    "url": "http://github.com/mountain/miniweb/issues"
   },
   "bin": {
     "mini": "./scripts/mini.js"
@@ -32,7 +32,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/mountain/minimal/blob/master/LICENSE"
+      "url": "http://github.com/mountain/miniweb/blob/master/LICENSE"
     }
   ],
   "files": [
