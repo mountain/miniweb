@@ -6,6 +6,4 @@
 *~
 node_modules/
 prototype/config/server.js
-prototype/log/
-
-
+prototype/log/app.log
