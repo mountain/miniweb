@@ -7,7 +7,12 @@ var debug = require("./utils").debug;
  * Route Builder
  *
  * route definition dsl => connect.router function
+ *
+ * Author: Kai Chen (chenk85@gmail.com)
+ *
+ * MIT License
  */
+
 var buffer = "",
     context = {},
     Builder = function () { };
@@ -99,7 +104,7 @@ Builder.prototype.resources = function (name, options) {
         { action: "show",    method: "get",    suffix: "%{params}" },
         { action: "edit",    method: "get",    suffix: "%{params}/edit" },
         { action: "update",  method: "put",    suffix: "%{params}" },
-        { action: "destroy", method: "delete", suffix: "%{params}" }            
+        { action: "destroy", method: "delete", suffix: "%{params}" }
     ];
     var avaliables = ["index", "new", "create", "show", "edit", "update", "destroy"];
     avaliables = filterOut(avaliables, options.excepts, options.onlys);

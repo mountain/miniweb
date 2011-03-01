@@ -1,5 +1,9 @@
 /*
  * Middlewares
+ *
+ * Author: Kai Chen (chenk85@gmail.com)
+ *
+ * MIT License
  */
 
 /*

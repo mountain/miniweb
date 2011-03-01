@@ -1,3 +1,12 @@
+/*
+ * Server
+ *
+ * Author: Mingli Yuan (mingli.yuan@gmail.com)
+ * Author: Kai Chen (chenk85@gmail.com)
+ *
+ * MIT License
+ */
+
 var logger = require('./logger'),
     Builder = require("./route_builder"),
     weblogger = require("./middleware").weblogger;
@@ -20,6 +29,12 @@ exports.start = function (root) {
       },
       function () {
           require('./controller').load(env, this);
+      },
+      function () {
+          require('./resource').clear(env, this);
+      },
+      function () {
+          require('./resource').load(env, this);
       },
       function (err) {
           if (err) {
