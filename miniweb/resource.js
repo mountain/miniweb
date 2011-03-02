@@ -26,7 +26,11 @@ function deleteDir(path, context, name) {
 
 exports.clear = function (env, callback) {
     logger.info('clearing public folder...');
-    postwalk([env.path, 'public'].join('/'), deleteFile, deleteDir, callback);
+    try {
+        postwalk([env.path, 'public'].join('/'), deleteFile, deleteDir, callback);
+    } catch (e) {
+        logger.error('Error clearing public folder: ' + e);
+    }
 };
 
 exports.load = function (env, callback) {
@@ -49,7 +53,7 @@ exports.load = function (env, callback) {
                     return;
                 }
                 if (stat.isDirectory()) {
-                    logger.error('Found subapp: ' + name);
+                    logger.info('Found subapp: ' + name);
                     counter++;
                     //logger.info('counter: ' + counter);
                     copydir([name, 'resources'].join('/'),
