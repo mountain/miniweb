@@ -30,7 +30,7 @@ exports.load = function (env, callback) {
                     return;
                 }
                 if(stat.isDirectory()) {
-                    logger.error('Found subapp: ' + name);
+                    logger.info('Found subapp: ' + name);
                     counter++;
                     //logger.info('counter: ' + counter);
                     walk([name, 'app', 'controllers'].join('/'), ctx, loadCtrl,

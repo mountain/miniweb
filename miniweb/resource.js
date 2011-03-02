@@ -26,12 +26,13 @@ function deleteDir(path, context, name) {
 
 exports.clear = function (env, callback) {
     logger.info('clearing public folder...');
-    postwalk([env.path, 'public'].join('/'), {}, deleteFile, deleteDir);
+    postwalk([env.path, 'public'].join('/'), deleteFile, deleteDir, callback);
 };
 
 exports.load = function (env, callback) {
     logger.info('loading resources...');
-    prewalk([env.path, 'resources'].join('/'), ctx, loadResource);
+    copydir([env.path, 'resources'].join('/'),
+                            [env.path, 'public'].join('/'));
 
     var dirname = [env.path, 'modules'].join('/')
     fs.readdir(dirname, function (err, relnames) {
