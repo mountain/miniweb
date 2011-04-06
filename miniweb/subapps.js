@@ -17,32 +17,37 @@ exports.detect = function (env, callback) {
             logger.error('Error when reading subapps: ' + err);
             return;
         }
-        relnames.forEach(function (relname, index, relnames) {
-            var name = path.join(dirname, relname),
-                counter = 0,
-                listener = function () {
-                    counter--;
-                    //logger.info('counter: ' + counter);
-                    if (counter === 0) {
-                        callback();
+
+        if (relnames.length === 0) {
+            callback();
+        } else {
+            relnames.forEach(function (relname, index, relnames) {
+                var name = path.join(dirname, relname),
+                    counter = 0,
+                    listener = function () {
+                        counter--;
+                        //logger.info('counter: ' + counter);
+                        if (counter === 0) {
+                            callback();
+                        }
+                    };
+
+                emitter.on('found', listener);
+
+                fs.stat(name, function (err, stat) {
+                    if (err) {
+                        logger.error('Error when reading subapp directory: ' + err);
+                        return;
                     }
-                };
-
-            emitter.on('found', listener);
-
-            fs.stat(name, function (err, stat) {
-                if (err) {
-                    logger.error('Error when reading subapp directory: ' + err);
-                    return;
-                }
-                if (stat.isDirectory()) {
-                    logger.info('Found subapp: ' + name);
-                    counter++;
-                    ctx.push(name);
-                    emitter.emit('found', name);
-                }
+                    if (stat.isDirectory()) {
+                        logger.info('Found subapp: ' + name);
+                        counter++;
+                        ctx.push(name);
+                        emitter.emit('found', name);
+                    }
+                });
             });
-        });
+        }
     });
 
 };
