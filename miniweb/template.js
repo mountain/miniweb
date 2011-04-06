@@ -23,36 +23,15 @@ exports.load = function (env, callback) {
     var ctx = (env.templates = {});
     walk([env.path, 'app', 'templates'].join('/'), ctx, loadTmpl);
 
-    var dirname = [env.path, 'modules'].join('/')
-    fs.readdir(dirname, function (err, relnames) {
-        if (err) {
-            logger.error('Error when reading subapps: ' + err);
-            return;
-        }
-        relnames.forEach(function (relname, index, relnames) {
-            var name = path.join(dirname, relname),
-                counter = 0;
-            fs.stat(name, function (err, stat) {
-                if(err) {
-                    logger.error('Error when reading subapp directory: ' + err);
-                    return;
-                }
-                if(stat.isDirectory()) {
-                    logger.error('Found subapp: ' + name);
-                    counter++;
-                    //logger.info('counter: ' + counter);
-                    walk([name, 'app', 'templates'].join('/'), ctx, loadTmpl,
-                    function () {
-                        counter--;
-                        //logger.info('counter: ' + counter);
-                        if (counter === 0) {
-                            callback();
-                        }
-                    });
-                }
-            });
+    var dirname = [env.path, 'modules'].join('/'),
+        last = env.subapps.length - 1;
+    env.subapps.forEach(function (appname, index, appnames) {
+        var name = path.join(dirname, appname);
+        walk([name, 'app', 'templates'].join('/'), ctx, loadTmpl,
+        function () {
+            if (index === last) {
+                callback();
+            }
         });
     });
-
-
 };

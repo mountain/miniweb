@@ -25,6 +25,9 @@ exports.start = function (root) {
           require('./config').load(env, this);
       },
       function () {
+          require('./subapps').detect(env, this);
+      },
+      function () {
           require('./template').load(env, this);
       },
       function () {

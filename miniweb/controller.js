@@ -1,6 +1,5 @@
 var fs   = require("fs"),
-    path = require('path'),
-    _    = require('underscore');
+    path = require('path');
 
 var logger = require('./logger'),
     walk = require('./environment').walk;
@@ -15,36 +14,15 @@ exports.load = function (env, callback) {
     var ctx = (env.controllers = {});
     walk([env.path, 'app', 'controllers'].join('/'), ctx, loadCtrl);
 
-    var dirname = [env.path, 'modules'].join('/')
-    fs.readdir(dirname, function (err, relnames) {
-        if (err) {
-            logger.error('Error when reading subapps: ' + err);
-            return;
-        }
-        relnames.forEach(function (relname, index, relnames) {
-            var name = path.join(dirname, relname),
-                counter = 0;
-            fs.stat(name, function (err, stat) {
-                if(err) {
-                    logger.error('Error when reading subapp directory: ' + err);
-                    return;
-                }
-                if(stat.isDirectory()) {
-                    logger.info('Found subapp: ' + name);
-                    counter++;
-                    //logger.info('counter: ' + counter);
-                    walk([name, 'app', 'controllers'].join('/'), ctx, loadCtrl,
-                    function () {
-                        counter--;
-                        //logger.info('counter: ' + counter);
-                        if (counter === 0) {
-                            callback();
-                        }
-                    });
-                }
-            });
+    var dirname = [env.path, 'modules'].join('/'),
+        last = env.subapps.length - 1;
+    env.subapps.forEach(function (appname, index, appnames) {
+        var name = path.join(dirname, appname);
+        walk([name, 'app', 'controllers'].join('/'), ctx, loadCtrl,
+        function () {
+            if (index === last) {
+                callback();
+            }
         });
     });
-
-
 };
