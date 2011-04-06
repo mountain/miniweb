@@ -25,6 +25,9 @@ exports.load = function (env, callback) {
 
     var dirname = [env.path, 'modules'].join('/'),
         last = env.subapps.length - 1;
+    if (last === -1) {
+        callback();
+    }
     env.subapps.forEach(function (appname, index, appnames) {
         var name = path.join(dirname, appname);
         walk([name, 'app', 'templates'].join('/'), ctx, loadTmpl,
