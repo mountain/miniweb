@@ -10,7 +10,7 @@ module.exports = function (proj) {
     }
     util.puts('create project ' + proj);
     var p = path.join(process.cwd(), proj);
-    path.exists(p, function (exists) {
+    fs.exists(p, function (exists) {
         if (exists) {
             util.puts('error: path ' + p + ' already exists');
         } else {
